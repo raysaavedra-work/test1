@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-​
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,6 @@
     <script src="https://js.stripe.com/v3"></script>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    ​
     <style>
         .box {
             display: inline-block;
@@ -25,17 +24,15 @@
             background-color: #556cd6;
             border-color: #556cd6;
         }
-​
-        ​
     </style>
-</head>
-​
+</head>​
+
 <body>
-​
+
 <nav class="navbar navbar-light bg-light">
     <span class="navbar-brand mb-0 h1">Stripe</span>
 </nav>
-​
+
 <div style="text-align: center; margin-top: 10px;">
     <div class="box">
         <h3>Checkout Form</h3>
@@ -55,13 +52,12 @@
         ​
     </div>
 </div>
-​
+
 <div id="error-message"></div>
-​
-​
+
 <script>
   var stripe = Stripe('pk_test_JnVlwAwmz6PcFeCMFXsztQHk00alHjeRTq');
-​
+
   var checkoutButton = document.getElementById('checkout-button-sku_Fg6RQOAN2Tu58m');
   checkoutButton.addEventListener('click', function () {
     console.log('here')
@@ -69,7 +65,6 @@
     // them to Checkout.
     stripe.redirectToCheckout({
       items: [{sku: 'sku_Fg6RQOAN2Tu58m', quantity: 1}],
-​
       // Do not rely on the redirect to the successUrl for fulfilling
       // purchases, customers may not always reach the success_url after
       // a successful payment.
@@ -88,6 +83,6 @@
     });
   });
 </script>
-​
+
 </body>
 </html>
