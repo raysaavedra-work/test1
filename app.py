@@ -59,7 +59,7 @@ def create_checkout_session():
         return jsonify(e), 40
 
 
-app.route('/webhook', methods=['POST'])
+@app.route('/webhook', methods=['POST'])
 def webhook_received():
     # You can use webhooks to receive information about asynchronous payment events.
     # For more about our webhook events check out https://stripe.com/docs/webhooks.
