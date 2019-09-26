@@ -26,6 +26,10 @@
       "description": "currency",
       "required": false
     },
+    "DOMAIN": {
+      "description": "domain",
+      "required": false
+    }
   },
   "buildpacks": [
     {
