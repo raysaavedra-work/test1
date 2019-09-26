@@ -17,6 +17,22 @@ app = Flask(__name__, template_folder='client')
 def order():
     return render_template('order.html')
 
+@app.route('/order_success')
+def success():
+    return render_template('order_success.html')
+
+@app.route('/failed')
+def failed():
+    return render_template('failed.html')
+
+@app.route('/config', methods=['GET'])
+def get_public_key():
+    return jsonify({
+      'publicKey': os.getenv('STRIPE_PUBLIC_KEY'),
+      'basePrice': os.getenv('BASE_PRICE'),
+      'currency': os.getenv('CURRENCY')
+    })
+
 # Fetch the Checkout Session to display the JSON result on the success page
 @app.route('/checkout-session', methods=['GET'])
 def get_checkout_session():
@@ -40,8 +56,7 @@ def create_checkout_session():
         
         # ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
         checkout_session = stripe.checkout.Session.create(
-            success_url=domain_url +
-            "/success.html?session_id={CHECKOUT_SESSION_ID}",
+            success_url=domain_url + "/order_success?session_id={CHECKOUT_SESSION_ID}",
             cancel_url=domain_url + "/canceled.html",
             payment_method_types=["card"],
             line_items=[
