@@ -96,7 +96,7 @@ def webhook_received():
         data = request_data['data']
         event_type = request_data['type']
     data_object = data['object']
-
+    print(data_object)
     print('event ' + event_type)
 
     if event_type == 'checkout.session.completed':
