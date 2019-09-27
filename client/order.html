@@ -37,7 +37,7 @@
     <div class="box">
         <h3>Checkout Form</h3>
         <div class="card" style="width: 18rem;">
-            <img src="./img/cupcake.jpg" class="card-img-top">
+            <img src="/static/img/cupcake.jpg" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title">Cupcake</h5>
                 <p class="card-text">$3.25</p>
@@ -67,7 +67,11 @@
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          quantity: 1
+          quantity: 1,
+          img: '/static/img/cupcake.jpg',
+          amount: 325,
+          currency: 'usd',
+          name: 'Cupcake'
         })
       }).then(function(result) {
         return result.json();
@@ -84,9 +88,6 @@
 
 
   checkoutButton.addEventListener('click', function () {
-    // When the customer clicks on the button, redirect
-    // them to Checkout.
-
     createCheckoutSession().then(function(data) {
         stripe
           .redirectToCheckout({

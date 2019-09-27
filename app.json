@@ -28,7 +28,6 @@
     },
     "DOMAIN": {
       "description": "domain",
-      "required": false
     }
   },
   "buildpacks": [
